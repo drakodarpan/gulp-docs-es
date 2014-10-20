@@ -1,57 +1,57 @@
-# Lineamientos
+# Guía
 
-> Aunque los lineamientos de esta guía son totalmente opcionales, el equipo de gulp **recomienda** acatar estos principios a todos los autores de plugin. Nadie quiere un plugin de pobre calidad. Los principios delineados en esta guía tienen el propósito de simplificar tu vida al garantizarte que tu plugin es adecuado para gulp.
+> Aunque esta guía es totalmente opcional, recomendamos **ALTAMENTE** que todo el mundo las siga. Nadie quiere un mal plugin. Estas direcciones te harán la vida más fácil y te darán la seguridad de que tu plugin encaja bien con gulp.
 
-[Crear un plugin](README.md) > Lineamientos
+[Crear un plugin](README.md) > Guía
 
-1. Plugins no deben duplicar funcionalidad que pueda ser fácilmente realizada a través de otros módulos node
-  - Por ejemplo: eliminar un directorio no es un buen plugin para gulp. Es preferible utilizar directamente un módulo como [del](https://github.com/sindresorhus/del) dentro de la tarea.
-  - Incluir cada función imaginable en plugins solo consigue corromper el ecosistema de plugins y no es adecuado con el paradigma de gulp, muy similar a la [filosofía de Unix](http://en.wikipedia.org/wiki/Unix_philosophy).
-  - Los plugins son para realizar operaciones con archivos. Si estás creando un plugin que lleva a cabo operaciones demasiado complejas con streams considera abstraer esa funcionalidad a un módulo de node en su lugar.
-  - Un ejemplo apropiado para un plugin gulp podría ser gulp-coffee. Ya que el módulo coffee-script no reconoce Vynil por defecto, es una buena idea implementar la funcionalidad de comunicar coffee-script con Vynil en un plugin propio para gulp.
-2. Plugins deberían llevar a cabo una y solo una operación.
-  - Evitar crear plugins con opciones configurables que realizen operaciones diferentes.
-  - Por ejemplo: Un plugin para minificar JavaScript no debería permitir adicionalmente añadir títulos o cabeceras al objeto generado.
-3. Plugins no deben duplicar o incluir operaciones que otros plugins ya hacen,
-  - En vez de concatenar en tu plugin, utiliza [gulp-concat](https://github.com/wearefractal/gulp-concat) en tu tarea.
-  - En vez de añadir una cabecera en tu plugin, mejor utiliza [gulp-header](https://github.com/godaddy/gulp-header) en tu tarea.
-  - No añadas un pie de página, mejor utiliza [gulp-footer](https://github.com/godaddy/gulp-footer) en tu tarea.
-  - Si su uso es de carácter opcional pero suele ser el caso que tu plugin emplea a otro, asegúrate dejarlo bien documentado.
-  - En la medida de lo posible, utiliza otros módulos en tu plugin para evitar duplicación de código y contribuir a la estabilidad y sintropía del ecosistema.
-4. **Siempre** prueba tus plugins.
-  - Añadir pruebas a tu plugin es simple, ni siquiera necesitas gulp para esto.
-  - Revisa otros plugins para ver ejemplos.
-5. Incluye la etiqueta `gulpplugin` en el `package.json` de tu plugin para que pueda ser visualizado en nuestro registro oficial.
-6. No generes excepciones dentro de streams
+1. Tu plugin no debe hacer algo que pueda hacerse fácilmente con un module node ya existente
+  - Por ejemplo: eliminar un directorio no es un buen plugin para gulp.Usa un módulo como [del](https://github.com/sindresorhus/del) dentro de la tarea en su lugar.
+  - Incluir cualquier cosa posible sólo por hacerlo no hará más que contaminar el con plugins de baja calidad que no tienen sentido con el paradigma de gulp.
+  - ¡gulp plugins son para hacer operaciones basadas en archivos! Si estás creando un plugin que lleva a cabo operaciones demasiado complejas con streams simplemente haz un módulo para node en su lugar.
+  - Un buen ejemplo de un gulp plugin sería algo como gulp-coffee. El módulo de coffee-script no funciona directamente con Vinyl, así que abstraemos los puntos problemáticos para hacerlo funcionar bien con gulp.
+1. Tu plugin debe hacer solo **una cosa**, y hacerla bien.
+  - Evita opciones de configuración que hagan a tu plugin hacer dos cosas totalmente diferentes.
+  - Por ejemplo: Un plugin para minificar JS no debería tener una opción para añadir cabeceras también.
+1. Tu plugin no debería hacer cosas que otro plugin es reponsable de hacer
+  - No debe concatenar, [gulp-concat](https://github.com/wearefractal/gulp-concat) hace esto.
+  - No debe añadir cabeceras [gulp-header](https://github.com/godaddy/gulp-header) hace esto.
+  - No debe añadir footers [gulp-footer](https://github.com/godaddy/gulp-footer) hace esto.
+  - Si es un un uso común pero opcional, documenta que tu plugin suele usarse con otro plugin.
+  - ¡Usa otros gulp plugins en tu plugin! Esto reduce la cantidad de código que tendrás que escribir y garantiza un ecosistema estable.
+1. Tu plugin **debe de estar testeado**.
+  - Testear un gulp plugin es fácil, ni siquira necesitas gulp para hacerlo.
+  - Mira otros plugins para ver ejemplos de esto.
+1. Incluye la palabra clave `gulpplugin` en tu `package.json` así aparecerás en nuestra búsqueda.
+1. No generes excepciones dentro de streams
   - En su lugar, emite un evento de **error**.
-  - Si descubres un error **externo** al stream, por ejemplo, una configuración invalida mientras el stream es creado, es aceptable generar la excepción.
-7. Prefija errores con el nombre del plugin
+  - Si descubres un error **fuera** del stream, tal como una configuración invalida mientras el stream es creado, podrías generar una excepción.
+1. Prefija cualquier error con el nombre de tu plugin
   - Por ejemplo: `gulp-replace: Cannot do regexp replace on a stream`
   - Utilizar la clase [PluginError](https://github.com/gulpjs/gulp-util#new-pluginerrorpluginname-message-options) del módulo gulp-util para facilitar esto.
-8. El tipo de `file.contents` de salida debe ser siempre igual al de entrada
-  - Si `file.contents` es null (no-lectura) simplemente ignora el archivo y pásalo
-  - Si `file.contents` es un stream que no soportas simplemente emite un error.
-    - No aloques buffers para streams con la intención de que tu plugin soporte streams o atraerás a la peste negra.
-9. No pases el objeto `File` en el _downstream_ o salida hasta que hayas completado la transformación u operación de tu plugin.
-10. Utiliza [`file.clone()`](https://github.com/wearefractal/vinyl#clone) al momento de clonar un archivo o crear uno nuevo en base a otro.
-11. Utiliza módulos de nuestra lista curada de [módulos recomendados](recommended-modules.md) y simplifica tu trabajo.
-12. Por favor **NO** requerir `gulp` como dependencia o `peerDependency` en plugins.
+1. El tipo de `file.contents` saliendo debe ser siempre igual al que entró
+  - Si `file.contents` es null (de no-lectura) simplemente ignora el archivo y pásalo
+  - Si `file.contents` es un Stream y es algo que tu no soportas simplemente emite un error.
+    - No guardes en memoria buffers un stream con la intención de que tu plugin soporte streams. Cosas horribles pasarán.
+1. No pases el objeto `File` downstream hasta que hayas terminado con el.
+1. Usa [`file.clone()`](https://github.com/wearefractal/vinyl#clone) para clonar un archivo o crear uno nuevo en base a otro.
+1. Usa módulos de nuestra [lista de módulos recomendados](recommended-modules.md) y hazte la vida más fácil.
+1. **NO** requieras `gulp` como dependencia o `peerDependency` en tu plugin.
   - Es fenomenal que uses gulp para automatizar el workflow de tu plugin, pero asegúrate que lo incluyes como `devDependency`.
-  - Incluir gulp como dependencia de tu plugin significa que todo aquel que instale tu plugin también reinstalará gulp, y todo su árbol de módulos dependientes consigo.
-  - No debería haber razón alguna de utilizar gulp dentro de la implementación de tu plugin. Si te hallas en un caso similar [abre un nuevo asunto](https://github.com/gulpjs/gulp/issues) y solicita ayuda.
+  - Requerir gulp como dependencia de tu plugin significa que todo aquel que instale tu plugin también reinstalará gulp, y todo su árbol de módulos dependientes.
+  - No debería haber razón alguna en utilizar gulp dentro de la implementación de tu plugin. Si te hallas en un caso similar [abre una nueva incidencia](https://github.com/gulpjs/gulp/issues) y solicita ayuda.
 
-### ¿Porqué reglas tan estrictas?
+### ¿Porqué son estas reglas tan estrictas?
 
-gulp intenta ser simple de usar. Gracias a los lineamientos estrictos descritos en esta guía es posible brindar un ecosistema consistente y robusto a toda la comunidad. Como resultado la carga de trabajo y esfuerzo de creadores de plugins se ve incrementada, pero al mismo tiempo esta iniciativa garantiza eliminar algunos problemas en el futuro.
+gulp intenta ser simple para los usuarios. Dando una guía estricta es posible ppropcionar un ecosistema consistente y de alta calidad para todo el mundo. Y aunque esto añade un poco más de trabajo para los autores de plugins, elimina un montón de problemas en un futuro.
 
-### ¿Qué ocurre si no sigo los lineamientos?
+### ¿Qué ocurre si no sigo estas direcciones?
 
-npm es libre para todos y por supuesto que tienes la libertad de hacer como gustes, pero esta guía tiene una razón de ser. Está pautado integrar un sistema de validación de pruebas en el registro oficial de plugins. Si tu plugin falla el test, esta información será visible de manera pública vía un sistema de puntuación. Evidentemente, la comunidad va a preferir plugins que adoptan _la filosofía de gulp_.
+npm es libre para todo el mundo, y eres libre de hacer como lo que quieras pero estas direcciones se prescriben por una razón. Hará test de aceptación pronto que serán integrados con la búsqueda de plugings. Si no sigues la guía esto será visible de manera pública vía un sistema de puntuación. La gente siempre preferirá plugins que concuerden con "la filosofía de gulp".
 
-### Ejemplo concreto de plugin.
+### ¿Cómo se haría un buen plugin?
 
 ```js
-// through2 es un módulo que facilita trabajar con transform streams en node
+// through2 es un pequeño módulo alrededor de node transform streams
 var through = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
@@ -72,12 +72,12 @@ function gulpPrefixer(prefixText) {
   }
 
   prefixText = new Buffer(prefixText);
-  // alocar memoria por adelantado
+  // guardar memoria por adelantado
 
-  // crear un stream through por el que cada archivo pase
+  // crear un stream através del que cada archivo pasará
   var stream = through.obj(function(file, enc, cb) {
     if (file.isNull()) {
-       // ignorar si no hay contenido
+       // no hacer nada si no hay contenido
     }
 
     if (file.isBuffer()) {
@@ -93,10 +93,10 @@ function gulpPrefixer(prefixText) {
     return cb();
   });
 
-  // devuelve el stream del archivo
+  // devolviendo el stream de archivos
   return stream;
 };
 
-// exporta la función principal del plugin
+// exportando la función principal del plugin
 module.exports = gulpPrefixer;
 ```

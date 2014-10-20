@@ -1,12 +1,12 @@
 # Uso de buffers
 
-> La siguiente información es pertinente a plugins que manipulan buffers.
+> He aquí alguna información de cómo crear un plugin para gulp que manipula buffers
 
-[Crear un plugin](README.md) > Uso de buffers
+[Crear un plugin](README.md) > Usando de buffers
 
-## Uso de buffers
+## Usando de buffers
 
-Si tu plugin depende en una librería que maneje buffers, es probably que tu plugin prefiera manejar `file.contents` como buffer también. A continuación se presenta la implementación de un plugin que prepende texto a archivos:
+Si tu plugin depende en una librería basada buffers, es probable que elijas basar tu plugin alrededor de file.contents como un buffer. Vamos a implementar un plugin que anteponga texto a archivos:
 
 
 ```js
@@ -14,7 +14,7 @@ var through = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 
-// consts
+// constantes
 const PLUGIN_NAME = 'gulp-prefixer';
 
 // función principal del plugin (manejando archivos)
@@ -23,9 +23,9 @@ function gulpPrefixer(prefixText) {
     throw new PluginError(PLUGIN_NAME, 'Missing prefix text!');
   }
 
-  prefixText = new Buffer(prefixText); // alocado por adelantado
+  prefixText = new Buffer(prefixText); // guardar en memoria por adelantado
 
-  // crear un stream through por el que cada archivo va a pasar
+  // crear un through stream por el que cada archivo pasará
   var stream = through.obj(function(file, enc, cb) {
     if (file.isStream()) {
       this.emit('error', new PluginError(PLUGIN_NAME, 'Streams are not supported!'));
@@ -36,14 +36,14 @@ function gulpPrefixer(prefixText) {
       file.contents = Buffer.concat([prefixText, file.contents]);
     }
 
-    // asegúrate de hacer el archivo disponible al siguiente plugin en la tubería
+    // asegúrate que el archivo pase al siguiente plugin
     this.push(file);
 
-    // indica a gulp que hemos culminado de procesar el archivo
+    // decirle gulp que hemos terminado con este archivo
     cb();
   });
 
-  // devuelve el stream
+  // devolviendo el stream
   return stream;
 };
 
@@ -51,20 +51,20 @@ function gulpPrefixer(prefixText) {
 module.exports = gulpPrefixer;
 ```
 
-El plugin anterior puede ser usado de la siguiente manera:
+El plugin anterior se puede usar así:
 
 ```js
 var gulp = require('gulp');
 var gulpPrefixer = require('gulp-prefixer');
 
 gulp.src('files/**/*.js')
-  .pipe(gulpPrefixer('cadena a adjuntar!'))
+  .pipe(gulpPrefixer('cadena antepuesta'))
   .pipe(gulp.dest('modified-files'));
 ```
 
 ## Manejando streams
 
-Desafortunadamente, el plugin anterior falla al utilizar `gulp.src` en modo non-buffered (streaming). Es recomendable brindar soporte a streams si es posible. Ver [Uso de streams]((dealing-with-streams.md)) para más información.
+Desafortunadamente, el plugin anterior falla al utilizar `gulp.src` en modo non-buffered (streaming). Debes de dar soporte a streams siendo posible. Ver [Usando streams]((dealing-with-streams.md)) para más información.
 
 ## Algunos plugins basados en buffers
 

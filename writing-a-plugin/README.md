@@ -1,26 +1,26 @@
 # Crear un plugin
 
-Si estás pensando en crear un plugin para gulp, te ahorrás un buen tiempo al leer la documentación en su totalidad.
+Si estás pensando en crear un plugin para gulp, te ahorrás tiempo leyendo la documentación.
 
-* [Lineamientos](guidelines.md) (lectura obligada)
+* [Guía](guidelines.md) (lectura RECOMENDADA)
 * [Uso de buffers](using-buffers.md)
 * [Uso de streams](dealing-with-streams.md)
 * [Pruebas](testing.md)
 
-## Lo que hace.
+## Qué hace
 
-### Streams o _Canales_
+### Streaming objetos archivo
 
 Los plugins de gulp siempre devuelven un stream en [modo objeto](http://nodejs.org/api/stream.html#stream_object_mode) que hace lo siguiente:
 
-1. Recibe [objetos File de vynil](http://github.com/wearefractal/vinyl)
-2. Produce [objetos File de vynil](http://github.com/wearefractal/vinyl)
+1. Recibe [objetos File de vinyl](http://github.com/wearefractal/vinyl)
+2. Produce [objetos File de vinyl](http://github.com/wearefractal/vinyl)
 
-También conocidos como [transform streams](http://nodejs.org/api/stream.html#stream_class_stream_transform_1) (algunas veces también denominados _through streams_).  Transform streams son streams bidireccionales  capaces de leer y modificar objetos que los atraviesan. Piensa en un filtro de agua conectado a una tubería o manguera.
+También conocidos como [transform streams](http://nodejs.org/api/stream.html#stream_class_stream_transform_1) (algunas veces también denominados through streams).  Transform streams son streams de lectura y escritura que manipulan objetos que los atraviesan. 
 
-### Modificando archivos
+### Modificando el contenido de archivos
 
-Archivos de vynil disponen de 3 tipos de atributos de contenido:
+Archivos de vinyl disponen de 3 tipos de atributos de contenido:
 
 - [Streams](dealing-with-streams.md)
 - [Buffers](using-buffers.md)
@@ -44,11 +44,11 @@ Archivos de vynil disponen de 3 tipos de atributos de contenido:
 
 ## Acerca de streams
 
-Si no estás familiarizado con streams, sería útil repasar el tema:
+Si no estás familiarizado con streams, necesitarás leer sobre ellos:
 
-* https://github.com/substack/stream-handbook (lectura obligada)
+* https://github.com/substack/stream-handbook (lectura RECOMENDADA)
 * http://nodejs.org/api/stream.html
 * [Streams](http://nodejs-es.github.io/api/all.html#all_es_streams) - Documentación de Node en Español.
 * [Tuberías](http://es.wikipedia.org/wiki/Tuber%C3%ADa_(inform%C3%A1tica). (Wikipedia)
 
-Librerías para gulp que no manipulan streams son generalmente etiquetadas [gulpfriendly](https://npmjs.org/browse/keyword/gulpfriendly) en npm.
+Otras librerías que no manipulan streams pero están hechas para ser usadas con gulp se etiquetan con la palabra clave [gulpfriendly](https://npmjs.org/browse/keyword/gulpfriendly) en npm.
