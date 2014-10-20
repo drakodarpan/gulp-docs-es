@@ -1,6 +1,6 @@
 # Procesos incrementales, incluyendo conjuntos completos de archivos
 
-El problema con los procesos incrementales es que normalmente quieres realizar operaciones sobre _todos_ los archivos procesados, no simplemente archivos individuales. Por ejemplo, puede que quieras usar jshint o crear un módulo sólo de los archivos que han cambiado, luego concatenarlo con otros ya código ya limpio y modularizado. Esto es difícil sin el uso de archivos temporales.
+El problema con los procesos incrementales es que normalmente quieres realizar operaciones sobre _todos_ los archivos procesados, no simplemente archivos individuales. Por ejemplo, puede que quieras usar jshint o crear un módulo sólo de los archivos que han cambiado, y luego concatenarlo con otros a código ya limpio y modularizado. Esto es difícil sin el uso de archivos temporales.
 
 Usa [gulp-cached](https://github.com/wearefractal/gulp-cached) y [gulp-remember](https://github.com/ahaurw01/gulp-remember) para conseguirlo
 

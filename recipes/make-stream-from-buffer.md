@@ -1,18 +1,18 @@
-# Make stream from buffer (memory contents)
+# Hacer un stream de un buffer (contenido en memoria)
 
-Sometimes you may need to start a stream with files that their contents are in a variable and not in a physical file. In other words, how to start a 'gulp' stream without using `gulp.src()`.
+A veces puede que necesites comenzar un stream con archivos cuyo contenido es variable y no está en un archivo físico. En otras palabras, como ejecutar 'gulp' sin usar `gulp.src()`.
 
-Let's say for example that we have a directory with js lib files and another directory with versions of some module. The target of the build would be to create one js file for each version, containing all the libs and the version of the module concatenated.
+Digamos por ejemplo que tenemos un directorio con archivos js lib y otro con versiones de algún módulo. El objetivo de este proceso sería crear un js para cada versión, conteniendo todos los libs y la versión del module concatenado.
 
-Logically we would break it down like this:
+Desde un punto de vista lógico sería así:
 
-* load the lib files
-* concatenate the lib file contents
-* load the versions files
-* for each version file, concatenate the libs' contents and the version file contents
-* for each version file, output the result in a file
+* cargar los archivos lib
+* concatenar el contenido de los archivos lib
+* cargar las versiones de los archivos
+* para cada archivo de versión, concatenar el contenido de los libs y el contenido del archivo de versión
+* para cada archivo de versión, escribir el resultado en un archivo
 
-Imagine this file structure:
+Imagina esta estructura de earchivos:
 
 ```sh
 ├── libs
@@ -23,7 +23,7 @@ Imagine this file structure:
     └── version.2.js
 ```
 
-You should get:
+Deberías obtener:
 
 ```sh
 └── output
@@ -31,7 +31,7 @@ You should get:
     └── version.2.complete.js # lib1.js + lib2.js + version.1.js
 ```
 
-A simple and modular way to do this would be the following:
+Un forma simple y modular de hacer esto podría ser la siguiente:
 
 ```js
 var gulp = require('gulp');
@@ -44,89 +44,89 @@ var size = require('gulp-size');
 var path = require('path');
 var es = require('event-stream');
 
-var memory = {}; // we'll keep our assets in memory
+var memory = {}; // mantendremos los assets en memoria
 
-// task of loading the files' contents in memory
+// tarea para cargar el contenido de los archivos en memoria
 gulp.task('load-lib-files', function() {
-  // read the lib files from the disk
+  // leer los archivos lib de memoria
   return gulp.src('src/libs/*.js')
-  // concatenate all lib files into one
+  // concatenar todos los arhivos lib en uno
   .pipe(concat('libs.concat.js'))
-  // tap into the stream to get each file's data
+  // "tocar" el stream para obtener el contenido de cada archivo
   .pipe(tap(function(file) {
-    // save the file contents in memory
+    // guardar el contenido de los archivos en memoria
     memory[path.basename(file.path)] = file.contents.toString();
   }));
 });
 
 gulp.task('load-versions', function() {
   memory.versions = {};
-  // read the lib files from the disk
+  // leer los archivos lib del disco
   return gulp.src('src/versions/version.*.js')
-  // tap into the stream to get each file's data
+  // "tocar" el stream para obtener el contenido de cada archivo
   .pipe( tap(function(file) {
-    // save the file contents in the assets
+    // guardar el contenido del archivo en los assets
     memory.versions[path.basename(file.path)] = file.contents.toString();
   }));
 });
 
 gulp.task('write-versions', function() {
-  // we store all the different version file names in an array
+  // guardamos todas las versiones de los archivos en un array
   var availableVersions = Object.keys(memory.versions);
-  // we make an array to store all the stream promises
+  // el array donde guardaremos todas las stream promises
   var streams = [];
 
   availableVersions.forEach(function(v) {
-    // make a new stream with fake file name
+    // hacer un nuevo stream con un nombre falso
     var stream = source('final.' + v);
-    // we load the data from the concatenated libs
+    // cargamos los datos de los lib concatenados
     var fileContents = memory['libs.concat.js'] +
-      // we add the version's data
+      // añadimos la información referente a la version
       '\n' + memory.versions[v];
 
     streams.push(stream);
 
-    // write the file contents to the stream
+    // escribimos el contenido de los archivos en el stream
     stream.write(fileContents);
 
     process.nextTick(function() {
-      // in the next process cycle, end the stream
+      // en el siguiente ciclo del proceso, cerrar el stream
       stream.end();
     });
 
     stream
-    // transform the raw data into the stream, into a vinyl object/file
+    // transformar los datos crudos del stream en objeto/archivo vinyl
     .pipe(vinylBuffer())
-    //.pipe(tap(function(file) { /* do something with the file contents here */ }))
+    //.pipe(tap(function(file) { /* hacer algo con el contenido aquí */ }))
     .pipe(gulp.dest('output'));
   });
 
   return es.merge.apply(this, streams);
 });
 
-//============================================ our main task
+//============================================ nuestra tarea principal
 gulp.task('default', function(taskDone) {
   runSequence(
-    ['load-lib-files', 'load-versions'],  // load the files in parallel
-    'write-versions',  // ready to write once all resources are in memory
-    taskDone           // done
+    ['load-lib-files', 'load-versions'],  // cargar los archivos en paralelo
+    'write-versions',  // listo para escribir una vez todos los recursos en memoria
+    taskDone           // listo
   );
 });
 
-//============================================ our watcher task
-// only watch after having run 'default' once so that all resources
-// are already in memory
+//============================================ nuestro observador
+// observar solo una vez desdpués de haber ejectuado la tarea 'principal' 
+// y así todos los recursos ya estarán en memoria
 gulp.task('watch', ['default'], function() {
   gulp.watch('./src/libs/*.js', function() {
     runSequence(
-      'load-lib-files',  // we only have to load the changed files
+      'load-lib-files',  // solo hay que cargar los archivos que han cambiado
       'write-versions'
     );
   });
 
   gulp.watch('./src/versions/*.js', function() {
     runSequence(
-      'load-versions',  // we only have to load the changed files
+      'load-versions',  // // solo hay que cargar los archivos que han cambiado
       'write-versions'
     );
   });

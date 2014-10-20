@@ -1,6 +1,6 @@
 # Browserify + Uglify2 con sourcemaps
 
-[Browserify](http://github.com/substack/node-browserify) se ha convertido en una herramienta importante e imprescindible, pero es necesario crear una interfaz para trabajar con con gulp. A continuación una simple receta para usar Browserify con transformaciones y full sourcemaps que reproducen los archivos originales individualmente.
+[Browserify](http://github.com/substack/node-browserify) se ha convertido en una herramienta importante e imprescindible, pero es necesario crear una interfaz para que funcione con gulp. A continuación una simple receta para usar Browserify con transformaciones y full sourcemaps que reproducen los archivos originales individualmente.
 
 ``` javascript
 'use strict';

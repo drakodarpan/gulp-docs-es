@@ -1,6 +1,6 @@
 # Combinar streams para manejar excepciones
 
-Por defecto, emitir un error en un stream genera una excepción al menos que ya tenga una función de callback escuchando por el evento `error`. Esto se torna ligeramente complicado al trabajar con conexiones complejas de streams.
+Por defecto, al emitir un error en un stream se genera una excepción al menos que este ya tengo un listener en el evento `error`. Esto se vuelve ligeramente complicado al trabajar con conexiones complejas de streams.
 
 Usando [multistream](https://github.com/feross/multistream) es posible convertir una serie de streams en uno solo, por lo que solo es necesario escuchar por el `error` en un solo lugar del código.
 
