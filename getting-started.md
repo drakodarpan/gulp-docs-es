@@ -12,7 +12,7 @@ $ npm install --global gulp
 $ npm install --save-dev gulp
 ```
 
-#### 3. Crear un `gulpfile.js` en el directorio raíz de tu proyecto:
+#### 3. Crea un `gulpfile.js` en el directorio raíz de tu proyecto:
 
 ```js
 var gulp = require('gulp');
@@ -34,7 +34,7 @@ Para ejectuar tareas individualmente, usa `gulp <tarea> <otra_tarea>`.
 
 ## ¿Y ahora qué?
 
-Tienes un archivo gulp vacío y todo está instalado ¿Cómo empiezar a usar gulp realmente? Lee las [recetas](recipes) o la [lista de artículos](README.md#articles) para más información.
+Tienes un archivo gulp vacío y todo está instalado ¿Cómo empiezar a usar gulp REALMENTE? Lee las [recetas](recipes) o la [lista de artículos](README.md#articles) para más información.
 
 ## .src, .watch, .dest, CLI args - ¿Qué es todo esto?
 

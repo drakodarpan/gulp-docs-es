@@ -57,7 +57,7 @@ gulp.src('client/js/**/*.js', { base: 'client' })
 
 ### gulp.dest(ruta[, opciones])
 
-Puede ser conectado a un stream y creará archivos. Re-emite todo dato que le pasa de modo que puede conectarse via streams a múltiples directorios. Los directorios que no existan serán creados.
+Puede ser conectado a un stream y creará archivos. Re-emite todo dato que pasa por el de pudiéndose [conectar via streams](http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options) a múltiples directorios. Los directorios que no existan serán creados.
 
 ```javascript
 gulp.src('./client/templates/*.jade')
@@ -138,7 +138,7 @@ gulp.task('jekyll', function(cb) {
 });
 ```
 
-##### Retorna un stream
+##### Devuelve un stream
 
 ```js
 gulp.task('algunnombre', function() {
@@ -173,7 +173,7 @@ gulp.task('algunnombre', function() {
 
 Para estos ejemplos, vamos suponer que tenemos dos tareas, "uno" y "dos" que quieres ejecutar en el este orden:
 
-1. En la tarea "uno" añades la señal indicando cuando esta se ha completado. Ya sea utilizando una función callback y llamarla cuando hayas acabado o devolver una promesa o stream con los que se deba esperar a resolver o terminar respectivamente.
+1. En la tarea "uno" añades la señal indicando cuando esta se ha completado. Ya sea utilizando una función callback y llamarla cuando hayas acabado o devolver una promesa o stream con los que se deba esperar a resolver o [terminar respectivamente](http://nodejs.org/api/stream.html#stream_events_finish_and_end).
 
 1. En la tarea "dos" añades una señal indicando al motor de gulp que esta tarea depende de que la primera se complete.
 
@@ -198,7 +198,7 @@ gulp.task('default', ['uno', 'dos']);
 
 ### gulp.watch(glob [, opciones], tareas) o gulp.watch(glob [, opciones, cb])
 
-Observar archivos y hacer algo cuando un archivo cambia. Éste siempre devuelve un EventEmitter que emite `change` events.
+Observar archivos y hacer algo cuando un archivo cambia. gulp.watch siempre devuelve un EventEmitter que emite `change` events.
 
 ### gulp.watch(glob[, opciones], tareas)
 
@@ -258,7 +258,6 @@ El tipo de cambio ocurrido, `added`, `changed` o `deleted`.
 Tipo: `String`
 
 La ruta al archivo que originó el evento.
-
 
 [node-glob documentation]: https://github.com/isaacs/node-glob#opciones
 [node-glob]: https://github.com/isaacs/node-glob

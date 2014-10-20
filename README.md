@@ -1,21 +1,22 @@
 # Documentación de gulp
+> [english](../README.md)
 
 * [Primeros Pasos](getting-started.md) - Como empezar con gulp.
 * [Documentación del API](API.md) - Aprende gulp de arriba a abajo.
 * [Documentación del CLI](CLI.md) - Aprende como invocar tareas y usar compiladores.
-* [Crear un Plugin](writing-a-plugin/README.md) - Recomendaciones para autores de plugins.
+* [Crear un Plugin](writing-a-plugin/README.md) - ¿Estás escribiendo un gulp plugin? Aquí encontrarás las recomendaciones básicas
 
 ## FAQ
 
-Ver el [FAQ](FAQ.md) por respuestas a las preguntas más frequentes.
+Ver el [FAQ](FAQ.md) para respuestas a las preguntas más frequentes.
 
 ## Recetas
 
-[Recetas](recipes#recipes) hechas por la comunidad para los usos de caso más frecuentes en gulp.
+[Recetas](recipes#recipes) hechas por la comunidad con los usos más frecuentes de gulp.
 
-## Más preguntas, etc.
+## ¿Aún tienes preguntas?
 
-Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/tagged/gulp), o únete al chat con nosotros [#gulpjs](http://webchat.freenode.net/?channels=gulpjs) en [Freenode](http://freenode.net/).
+Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/tagged/gulp), o ven a chatear con nosotros [#gulpjs](http://webchat.freenode.net/?channels=gulpjs) en [Freenode](http://freenode.net/).
 
 ## Artículos (Inglés)
 * [Introducción a gulp en Tagtree](http://tagtree.tv/gulp)
@@ -31,8 +32,8 @@ Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/t
 
 ## Licencia
 
-Toda la documentación está cubierta por CC0 *(total libertad de hacer como gustes - dominio público)*.
+Toda la documentación está cubierta por la licencia CC0 *(haz lo que quieras con ello - dominio público)*.
 
 [![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/deed.es)
 
-[Fractal](http://wearefractal.com) ha renunciado a todos los derechos relacionados de este trabajo en la medida que sea posible conforme a la ley.
+En la medida que lo permita la ley, [Fractal](http://wearefractal.com) ha renunciado a todos los derechos relacionados de este trabajo.

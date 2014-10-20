@@ -24,7 +24,7 @@ Es posible. Preguntate:
   - Si es así, considera llevar esa funcionalidad a otro plugin. [Comprueba si aún no existe en npm][npm plugin search].
 1. ¿Esta mi plugin haciendo dos cosas, completamente diferentes, basadas en una opción de configuración? 
   - Si es así, podría servir mejor a la comunidad si lo separas en dos plugins diferentes.
-  - Si las dos funciones son diferentes, pero se relacionan, probablemente está bien.
+  - Si las dos funciones son diferentes, pero se relacionan, probablemente esté bien.
 
 ## ¿Cómo deben representarse los saltos de línea a la salida de un plugin?
 
