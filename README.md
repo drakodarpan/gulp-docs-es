@@ -1,5 +1,5 @@
 # Documentación de gulp
-> [english](../README.md)
+> [English](https://github.com/gulpjs/gulp/tree/master/docs)
 
 * [Primeros Pasos](getting-started.md) - Como empezar con gulp.
 * [Documentación del API](API.md) - Aprende gulp de arriba a abajo.
