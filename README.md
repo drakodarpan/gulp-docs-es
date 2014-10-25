@@ -1,10 +1,10 @@
 # Documentación de gulp
-> [English](https://github.com/gulpjs/gulp/tree/master/docs)
 
 * [Primeros Pasos](getting-started.md) - Como empezar con gulp.
 * [Documentación del API](API.md) - Aprende gulp de arriba a abajo.
 * [Documentación del CLI](CLI.md) - Aprende como invocar tareas y usar compiladores.
 * [Crear un Plugin](writing-a-plugin/README.md) - ¿Estás escribiendo un gulp plugin? Aquí encontrarás las recomendaciones básicas
+* [Documentación en Inglés][EnglishDocs]
 
 ## FAQ
 
@@ -37,3 +37,5 @@ Toda la documentación está cubierta por la licencia CC0 *(haz lo que quieras c
 [![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/deed.es)
 
 En la medida que lo permita la ley, [Fractal](http://wearefractal.com) ha renunciado a todos los derechos relacionados de este trabajo.
+
+[EnglishDocs]: (https://github.com/gulpjs/gulp/tree/master/docs)
