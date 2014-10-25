@@ -4,7 +4,7 @@
 * [Documentación del API](API.md) - Aprende gulp de arriba a abajo.
 * [Documentación del CLI](CLI.md) - Aprende como invocar tareas y usar compiladores.
 * [Crear un Plugin](writing-a-plugin/README.md) - ¿Estás escribiendo un gulp plugin? Aquí encontrarás las recomendaciones básicas
-* [Documentación en Inglés][EnglishDocs]
+* [Documentación en Inglés][EnglishDocs] - gulp english documentation
 
 ## FAQ
 
@@ -38,4 +38,4 @@ Toda la documentación está cubierta por la licencia CC0 *(haz lo que quieras c
 
 En la medida que lo permita la ley, [Fractal](http://wearefractal.com) ha renunciado a todos los derechos relacionados de este trabajo.
 
-[EnglishDocs]: (https://github.com/gulpjs/gulp/tree/master/docs)
+[EnglishDocs]: https://github.com/gulpjs/gulp/tree/master/docs
