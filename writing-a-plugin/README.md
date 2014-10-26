@@ -24,7 +24,7 @@ Archivos de vinyl disponen de 3 tipos de atributos de contenido:
 
 - [Streams](dealing-with-streams.md)
 - [Buffers](using-buffers.md)
-- Vacío (null) - Útil por ejemplo para rimraf Useful for things like [rimraf](https://www.npmjs.org/package/rimraf), clean, etc., donde el contenido no es necesario.
+- Vacío (null) - Útil por ejemplo para [rimraf](https://www.npmjs.org/package/rimraf), limpieza, donde el contenido no es necesario.
 
 ## Otros recursos
 
