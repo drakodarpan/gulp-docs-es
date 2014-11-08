@@ -14,7 +14,7 @@ var watchify = require('watchify');
 var browserify = require('browserify');
 
 gulp.task('watch', function() {
-  var bundler = watchify(browserify('src/index.js', watchify.args));
+  var bundler = watchify(browserify('./src/index.js', watchify.args));
 
   // Opcionalmente, puedes aplicar transformaciones
   // y otras opciones de configuración al procesado

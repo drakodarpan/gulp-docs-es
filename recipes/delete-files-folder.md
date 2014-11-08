@@ -1,6 +1,6 @@
 # Eliminar archivos y carpetas
 
-Puede que quieras eliminar archivos y carpetas en tu proceso. Ya que eliminar archivos no necesita del contenido de los archivos no hay razón para usar gulp. Esta es una oportunidad excelente para simplemente usar un modulo de node
+Puede que quieras eliminar archivos y carpetas en tu proceso. Ya que eliminar archivos no necesita del contenido de los archivos, no hay razón para usar gulp. Esta es una oportunidad excelente para simplemente usar un modulo de node
 
 Utilicemos el módulo [`del`](https://github.com/sindresorhus/del) para este ejemplo ya que soporta múltiples archivos y [globbing](https://github.com/sindresorhus/multimatch#globbing-patterns):
 
