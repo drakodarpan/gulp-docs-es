@@ -1,6 +1,6 @@
 # Generar un archivo por carpeta
 
-Si tienes un conjunto de carpetas, y quisieras hacer un conjunto de tareas en cada uno de ellos, por ejemplo... 
+Si tienes un conjunto de carpetas, y quisieras hacer un conjunto de tareas en cada uno de ellos, por ejemplo...
 
 ```
 /scripts
@@ -59,4 +59,4 @@ gulp.task('scripts', function() {
 
 Unas pocas notas:
 - `folders.map` - ejecuta la funcion una vez por cada carpeta y devuelver el stream asíncrono.
-- `es.concat` - combina los streams y termina sólo cuando todos los streams hallan acabado
+- `merge` - combina los streams y termina sólo cuando todos los streams hallan acabado

@@ -8,7 +8,7 @@ Utilicemos el módulo [`del`](https://github.com/sindresorhus/del) para este eje
 $ npm install --save-dev gulp del
 ```
 
-Imagina esta estructura de archivos:
+Imagina la siguiente estructura de archivos:
 
 ```
 .
@@ -40,3 +40,41 @@ gulp.task('clean:mobile', function (cb) {
 
 gulp.task('default', ['clean:mobile']);
 ```
+
+## Elimina archivos
+
+Puede que quieras eliminar algunos archivos después de procesarlos.
+
+Usaremos [vinyl-paths](https://github.com/sindresorhus/vinyl-paths) para obtener la ruta del archivo fácilmente en el stream y pasarla al método `del`.
+
+```sh
+$ npm install --save-dev gulp del vinyl-paths
+```
+
+Imagina la siguiente estructura de archivos:
+
+```
+.
+├── tmp
+│   ├── rainbow.js
+│   └── unicorn.js
+└── dist
+```
+
+```js
+var gulp = require('gulp');
+var stripDebug = require('gulp-strip-debug'); // solo como un ejemplo
+var del = require('del');
+var vinylPaths = require('vinyl-paths');
+
+gulp.task('clean:tmp', function () {
+  return gulp.src('tmp/*')
+    .pipe(stripDebug())
+    .pipe(gulp.dest('dist'))
+    .pipe(vinylPaths(del));
+});
+
+gulp.task('default', ['clean:tmp']);
+```
+
+Haz esto sólo si ya estas usando otros plugins, de lo contrario sólo usar el módulo directamente como `gulp.src` es costoso.

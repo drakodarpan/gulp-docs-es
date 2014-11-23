@@ -25,7 +25,7 @@ Tipo: `Object`
 
 Opciones pasadas a [node-glob] a través de [glob-stream].
 
-gulp añade dos opciones además de las [soportadas por node-glob][node-glob documentation] y [glob-stream]:
+gulp añade algunas opciones además de las [soportadas por node-glob][node-glob documentation] y [glob-stream]:
 
 #### opciones.buffer
 Tipo: `Boolean`
