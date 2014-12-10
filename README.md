@@ -30,6 +30,11 @@ Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/t
 * [Gulp - Fundamentos (screencast)](https://www.youtube.com/watch?v=dwSLFai8ovQ)
 * [Empezando con gulp (video serie)](http://www.youtube.com/playlist?list=PLRk95HPmOM6PN-G1xyKj9q6ap_dc9Yckm)
 
+## Ejemplos
+
+- [Web Starter Kit gulpfile](https://github.com/google/web-starter-kit/blob/master/gulpfile.js)
+
+
 ## Licencia
 
 Toda la documentación está cubierta por la licencia CC0 *(haz lo que quieras con ello - dominio público)*.
