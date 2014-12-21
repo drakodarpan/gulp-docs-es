@@ -18,6 +18,9 @@ Ver el [FAQ](FAQ.md) para respuestas a las preguntas más frequentes.
 
 Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/tagged/gulp), o ven a chatear con nosotros [#gulpjs](http://webchat.freenode.net/?channels=gulpjs) en [Freenode](http://freenode.net/).
 
+## Libros
+* [Developing a gulp Edge](http://shop.oreilly.com/product/9781939902146.do)
+
 ## Artículos (Inglés)
 * [Introducción a gulp en Tagtree](http://tagtree.tv/gulp)
 * [Introducción a streams en node.js](https://github.com/substack/stream-handbook)
@@ -29,10 +32,11 @@ Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/t
 * [Construyendo con Gulp](http://www.smashingmagazine.com/2014/06/11/building-with-gulp/)
 * [Gulp - Fundamentos (screencast)](https://www.youtube.com/watch?v=dwSLFai8ovQ)
 * [Empezando con gulp (video serie)](http://www.youtube.com/playlist?list=PLRk95HPmOM6PN-G1xyKj9q6ap_dc9Yckm)
+* [Optimiza tu código web con gulp](http://www.linuxuser.co.uk/tutorials/optimise-your-web-code-with-gulp-js)
 
 ## Ejemplos
 
-- [Web Starter Kit gulpfile](https://github.com/google/web-starter-kit/blob/master/gulpfile.js)
+* [Web Starter Kit gulpfile](https://github.com/google/web-starter-kit/blob/master/gulpfile.js)
 
 
 ## Licencia

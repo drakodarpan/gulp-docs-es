@@ -56,7 +56,7 @@ var through = require('through2');
 var gutil = require('gulp-util');
 var PluginError = gutil.PluginError;
 
-// constantes
+// Constantes
 const PLUGIN_NAME = 'gulp-prefixer';
 
 function prefixStream(prefixText) {
@@ -74,29 +74,25 @@ function gulpPrefixer(prefixText) {
   prefixText = new Buffer(prefixText);
   // guardar memoria por adelantado
 
-  // crear un stream através del que cada archivo pasará
-  var stream = through.obj(function(file, enc, cb) {
+  // Crear un stream através del que cada archivo pasará
+  return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
        // no hacer nada si no hay contenido
     }
 
     if (file.isBuffer()) {
-        file.contents = Buffer.concat([prefixText, file.contents]);
+      file.contents = Buffer.concat([prefixText, file.contents]);
     }
 
     if (file.isStream()) {
-        file.contents = file.contents.pipe(prefixStream(prefixText));
+      file.contents = file.contents.pipe(prefixStream(prefixText));
     }
 
-    this.push(file);
-
-    return cb();
+    // devolver archivo vacío
+    cb(null, file);
   });
-
-  // devolviendo el stream de archivos
-  return stream;
 };
 
-// exportando la función principal del plugin
+// Exportando la función principal del plugin
 module.exports = gulpPrefixer;
 ```

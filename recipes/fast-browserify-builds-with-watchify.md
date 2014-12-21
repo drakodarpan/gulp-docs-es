@@ -9,28 +9,29 @@ Watchify no tiene un gulp plugin, pero no lo necesita: puedes usar [vinyl-source
 ``` javascript
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var watchify = require('watchify');
 var browserify = require('browserify');
 
-gulp.task('watch', function() {
-  var bundler = watchify(browserify('./src/index.js', watchify.args));
+var bundler = watchify(browserify('./src/index.js', watchify.args));
+// añade aquí cualquier otra opción de browserify o transformadas
+bundler.transform('brfs');
 
-  // Opcionalmente, puedes aplicar transformaciones
-  // y otras opciones de configuración al procesado
-  // como sueles poder hacer con browserify
-  bundler.transform('brfs');
+gulp.task('js', bundle); // y así puedes ejecutar `gulp js` para construir el archivo
+bundler.on('update', bundle); // cuando cualquier dependencia cambie, ejecuta el bundler
 
-  bundler.on('update', rebundle);
-
-  function rebundle() {
-    return bundler.bundle()
-      // logear errores si ocurren
-      .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-      .pipe(source('bundle.js'))
-      .pipe(gulp.dest('./dist'));
-  }
-
-  return rebundle();
-});
+function bundle() {
+  return bundler.bundle()
+  // logear errores en caso de que ocurran
+  .on('error', gutil.log.bind(gutil, 'Error Browserify'))
+  .pipe(source('bundle.js'))
+  // opcional, elimina si no quieres sourcemaps
+  .pipe(buffer())
+  .pipe(sourcemaps.init({loadMaps: true})) // carga el sourcemap del archivo browserify
+  .pipe(sourcemaps.write('./')) // escribe el archivo .map
+  //
+  .pipe(gulp.dest('./dist'));
+}
 ```
