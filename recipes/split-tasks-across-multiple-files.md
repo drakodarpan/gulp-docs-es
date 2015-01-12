@@ -5,7 +5,7 @@ en archivos diferentes usando el módulo [require-dir](https://github.com/aseemk
 
 Imagina la siguiente estructura
 
-```sh
+```
 gulpfile.js
 tasks/
 ├── dev.js
@@ -19,7 +19,7 @@ Instala el módulo `require-dir`:
 npm install --save-dev require-dir
 ```
 
-Añade las siguientes líneas a tu `gulpfile.js` file:
+Añade las siguientes líneas a tu archivo `gulpfile.js`:
 
 ```js
 var requireDir = require('require-dir');
