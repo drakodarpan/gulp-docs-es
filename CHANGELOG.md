@@ -7,6 +7,7 @@
 - Add CHANGELOG.md
 - change refs to gulp PRs and commits for a changelog see #4
 - weekly update for PRs gulpjs/gulp#820 gulpjs/gulp#836 gulpjs/gulp#834, gulpjs/gulp#866
+- General revision with emphasis on grammar.
 
 ### 2014
 
