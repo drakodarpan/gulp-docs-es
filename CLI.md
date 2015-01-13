@@ -1,8 +1,10 @@
 ## Documentación del CLI
 
+A continuación se presenta la documentación oficial de la interfaz de línea de comandos de gulp.
+
 ### Flags
 
-gulp tiene muy pocas [flags](http://es.wikipedia.org/wiki/Flag) que conocer. El resto de flags se dejan para uso en las tareas en caso de que estas lo necesiten.
+gulp utiliza la siguientes [flags](http://es.wikipedia.org/wiki/Flag) que conocer.
 
 - `-v` o `--version` muestra la versión global y local de gulp respectivamente.
 - `--require <module path>` permite incluir un módulo antes de ejecutar el gulpfile. Esto es útil para [transcompiladores](http://en.wikipedia.org/wiki/Source-to-source_compiler) y también tiene otros usos. Puedes user varias `--require` flags.
@@ -18,7 +20,7 @@ La CLI agrega `process.env.INIT_CWD`, la ruta original del CWD desde el que gulp
 
 ### Tareas
 
-Tareas específicas pueden ser ejecutadas vía `gulp <task>`. Si sólo es escribe `gulp` se ejecutará la tarea que registraste como `default`. Si la tarea `default` no existe gulp dará error.
+Tareas específicas pueden ser ejecutadas vía `gulp <task>`. Simplemente `gulp` ejecutará la tarea que se ha registrado como `default`. Si la tarea `default` no existe gulp dará error.
 
 ### Compiladores
 
