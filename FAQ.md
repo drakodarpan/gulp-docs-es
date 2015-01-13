@@ -1,12 +1,12 @@
 # FAQ
 
-## ¿Porqué Gulp? ¿Porqué no ____?
+## ¿Porqué Gulp? o ¿Porqué no otro?
 
 Mira la [presentación introductoria] para un resumen de cómo se originó gulp.
 
 ## ¿Es gulp o Gulp?
 
-gulp simpre se escribe en minúscula. La única excepción es en el logo donde Gulp aparece en mayúsculas.
+gulp siempre se escribe en minúscula. La única excepción es en el logo donde Gulp aparece en mayúsculas.
 
 ## ¿Dónde puedo encontrar una lista de plugins para gulp?
 
@@ -16,13 +16,13 @@ Los plugins de gulp siempre incluyen la palabra clave `gulpplugin`. [Busca gulp 
 
 Consulta la wiki [Crear un plugin] donde encontrarás una guía y un ejemplo que te pondrá en marcha.
 
-## Mi plugin hace ____, ¿está haciendo demasiado?
+## ¿Cómo saber si mi plugin hace demasiado?
 
-Es posible. Preguntate:
+Pregúntate:
 
-1. ¿Esta mi plugin haciendo algo que puede que otros plugins necesiten hacer? 
+1. ¿Está mi plugin haciendo algo que puede que otros plugins necesiten hacer también?
   - Si es así, considera llevar esa funcionalidad a otro plugin. [Comprueba si aún no existe en npm][npm plugin search].
-1. ¿Esta mi plugin haciendo dos cosas, completamente diferentes, basadas en una opción de configuración? 
+1. ¿Esta mi plugin haciendo dos cosas, completamente diferentes, dependiendo de alguna opción configurable?
   - Si es así, podría servir mejor a la comunidad si lo separas en dos plugins diferentes.
   - Si las dos funciones son diferentes, pero se relacionan, probablemente esté bien.
 
@@ -40,7 +40,7 @@ Las actualizaciones de gulp se pueden encontrar en los siguientes twitters:
 
 ## ¿Tiene gulp un canal IRC?
 
-Si, ven a chatear con nosotros en #gulpjs [Freenode]. 
+Sí, ven a chatear con nosotros en #gulpjs [Freenode]. 
 
 [Crear un plugin]: writing-a-plugin/README.md
 [presentación introductoria]: http://slid.es/contra/gulp
