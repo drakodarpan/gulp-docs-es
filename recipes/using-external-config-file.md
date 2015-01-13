@@ -2,8 +2,6 @@
 
 Es beneficioso porque mantiene las tareas DRY y el config.json puede ser usado por otro *task runner*, como `grunt`.
 
--
-
 ###### `config.json`
 
 ```json

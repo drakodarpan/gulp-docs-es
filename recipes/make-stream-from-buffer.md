@@ -12,7 +12,7 @@ Desde un punto de vista lógico sería así:
 * para cada archivo de versión, concatenar el contenido de los libs y el contenido del archivo de versión
 * para cada archivo de versión, escribir el resultado en un archivo
 
-Imagina esta estructura de earchivos:
+Imagina esta estructura de archivos:
 
 ```sh
 ├── libs
@@ -114,7 +114,7 @@ gulp.task('default', function(taskDone) {
 });
 
 //============================================ nuestro observador
-// observar solo una vez desdpués de haber ejectuado la tarea 'principal' 
+// observar solo una vez desdpués de haber ejectuado la tarea 'principal'
 // y así todos los recursos ya estarán en memoria
 gulp.task('watch', ['default'], function() {
   gulp.watch('./src/libs/*.js', function() {
