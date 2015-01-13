@@ -3,8 +3,8 @@
 * [Primeros Pasos](getting-started.md) - Como empezar con gulp.
 * [Documentación del API](API.md) - Aprende gulp de arriba a abajo.
 * [Documentación del CLI](CLI.md) - Aprende como invocar tareas y usar compiladores.
-* [Crear un Plugin](writing-a-plugin/README.md) - ¿Estás escribiendo un gulp plugin? Aquí encontrarás las recomendaciones básicas
-* [Documentación en Inglés][EnglishDocs] - gulp english documentation
+* [Crear un Plugin](writing-a-plugin/README.md) - ¿Estás escribiendo un gulp plugin? Aquí encontrarás las recomendaciones básicas.
+* [Documentación en Inglés][EnglishDocs] - gulp english documentation.
 
 ## FAQ
 
@@ -37,7 +37,6 @@ Escribe en [StackOverflow con el tag #gulp](http://stackoverflow.com/questions/t
 ## Ejemplos
 
 * [Web Starter Kit gulpfile](https://github.com/google/web-starter-kit/blob/master/gulpfile.js)
-
 
 ## Licencia
 
