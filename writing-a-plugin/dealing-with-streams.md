@@ -57,7 +57,7 @@ function gulpPrefixer(prefixText) {
 
   // devolviendo el stream
   return stream;
-};
+}
 
 // exportando la función principal del plugin
 module.exports = gulpPrefixer;
