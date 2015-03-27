@@ -7,8 +7,7 @@
 
 var browserify = require('browserify');
 var gulp = require('gulp');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
+var transform = require('vinyl-transform');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -18,24 +17,19 @@ var getBundleName = function () {
   return version + '.' + name + '.' + 'min';
 };
 
-gulp.task('javascript', function() {
-
-  var bundler = browserify({
-    entries: ['./app.js'],
-    debug: true
+gulp.task('javascript', function () {
+  // transformar un stream normal de node a un gulp stream (buffer vinyl stream)
+  var browserified = transform(function(filename) {
+    var b = browserify(filename);
+    return b.bundle();
   });
 
-  var bundle = function() {
-    return bundler
-      .bundle()
-      .pipe(source(getBundleName() + '.js'))
-      .pipe(buffer())
-      .pipe(sourcemaps.init({loadMaps: true}))
-      .pipe(uglify())
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('./dist/js/'));
-  };
-
-  return bundle();
+  return gulp.src('./app.js')
+    .pipe(browserified)
+    .pipe(sourcemaps.init({loadMaps: true}))
+        // Añadir tasks de transformación aquí
+        .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./dist/js/'));
 });
 ```
