@@ -21,6 +21,7 @@ bundler.transform('brfs');
 
 gulp.task('js', bundle); // y así puedes ejecutar `gulp js` para construir el archivo
 bundler.on('update', bundle); // cuando cualquier dependencia cambie, ejecuta el bundler
+bundler.on('log', gutil.log); // escribir los logs en el terminal
 
 function bundle() {
   return bundler.bundle()
