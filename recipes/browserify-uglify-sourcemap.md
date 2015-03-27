@@ -14,7 +14,7 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('javascript', function () {
   // transformar un stream normal de node a un gulp stream (buffer vinyl stream)
   var browserified = transform(function(filename) {
-    var b = browserify(filename);
+    var b = browserify({entries: filename, debug: true});
     return b.bundle();
   });
 
