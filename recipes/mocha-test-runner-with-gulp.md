@@ -3,7 +3,7 @@
 ### Pasar módulos compartidos en todos los tests
 
 ```js
-// npm install gulp gulp-mocha
+// npm install gulp gulp-mocha gulp-util
 
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
